@@ -317,7 +317,7 @@
      visibility: visible;
 }
  .top_awro {
-     background: #ee4a79 none repeat scroll 0 0;
+     background: #b197d4 none repeat scroll 0 0;
      cursor: pointer;
      padding: 6px 8px;
      position: fixed;
@@ -332,7 +332,7 @@
      transition: all 0.5s ease;
 }
  .sale_pro {
-     background: #f25252 !important;
+     background: #b197d4 !important;
 }
  .margin_top_50 {
      margin-top: 50px;
@@ -391,10 +391,10 @@ ul.top_icon li a{ color: #fff;
 
 
  .menu-area-main li:hover a, .menu-area-main li:focus a {
-     color: #b32137;
+     color: #b197d4;
 }
  .menu-area-main li.active a {
-     color: #b32137;
+     color: #b197d4;
 }
  .right_cart_section {
      float: right;
@@ -1342,7 +1342,7 @@ ul.top_icon li a{ color: #fff;
      left: -10px;
      top: 4px;
      z-index: -1;
-     background: #e12d4f;
+     background: #b197d4;
      -webkit-transform: rotate(45deg);
      transform: rotate(45deg);
 }
@@ -1354,7 +1354,7 @@ ul.top_icon li a{ color: #fff;
      right: -10px;
      top: 4px;
      z-index: -1;
-     background: #e12d4f;
+     background: #b197d4;
      -webkit-transform: rotate(45deg);
      transform: rotate(45deg);
 }
@@ -1460,7 +1460,7 @@ ul.locat_icon li a{
      padding: 0px 0px 20px 0px;
      font-size: 50px;
      font-weight: bold;
-     color: #b32137;
+     color: #b197d4;
      line-height: 50px;
 }
 
@@ -1471,6 +1471,7 @@ ul.locat_icon li a{
 }
 
 .black {color: #141012 }
+.purple {color: #b197d4}
 .about .about-box {
 
     
@@ -1483,14 +1484,14 @@ ul.locat_icon li a{
  .about .about-box p {
     font-size: 17px;
      line-height: 32px;
-     color: #141012;
+     color: #b197d4;
      
 }
  .about .about-box a{
      width: 200px;
      font-size: 17px;
      padding: 20px 0px;
-     background-color: #81256c;
+     background-color: #b197d4;
      color: #fff;
      display: inline-block;
      line-height: 20px;
@@ -1500,10 +1501,10 @@ ul.locat_icon li a{
 }
  .about .about-box a:hover {
     color: #fff;
-     background-color: #81256c;
+     background-color: #b197d4;
 }
 
-.border {border-radius: 30px; border: #81256c solid 2px !important; padding: 40px 40px;} 
+.border {border-radius: 30px; border: #b197d4 solid 2px !important; padding: 40px 40px;} 
 
  .Library {
      background-color: #fff;
@@ -1517,7 +1518,7 @@ ul.locat_icon li a{
      padding: 0px 0px 20px 0px;
      font-size: 50px;
      font-weight: bold;
-     color: #b32137;
+     color: #b197d4;
      line-height: 50px;
 }
  
@@ -1527,7 +1528,7 @@ ul.locat_icon li a{
      line-height: 32px;
 }
 
-.bg {background-color: #81256c;}
+.bg {background-color: #b197d4;}
 
 .Library-box {
     padding: 20px 0px 10px 0px;
@@ -1545,7 +1546,7 @@ ul.locat_icon li a{
      width: 200px;
      font-size: 17px;
      padding: 20px 0px;
-     background-color: #81256c;
+     background-color: #b197d4;
      color: #fff;
      display: inline-block;
      line-height: 20px;
@@ -1569,7 +1570,7 @@ ul.locat_icon li a{
      padding: 0px 0px 20px 0px;
      font-size: 50px;
      font-weight: bold;
-     color: #b32137;
+     color: #b197d4;
      line-height: 50px;
 }
  
@@ -1590,12 +1591,6 @@ line-height: 30px;
 text-align: center;
 }
 
-
-
-
-
-
- 
  .contact_form {
      background: #114c7d;
      padding: 45px;
@@ -1622,7 +1617,7 @@ text-align: center;
 .form-control {
     border: #fff solid 1px;
     padding: 15px 20px;
-    border-radius: inherit;
+    border-radius: 30px;
     color: #cfcece;
     font-weight: 300;
     font-size: 18px;
@@ -1634,7 +1629,7 @@ text-align: center;
     padding: 10px 20px 10px 20px;
     color: #655f5f !important;
     width: 100%;
-    border: none;
+    border-radius: 30px;
     height: auto;
     min-height: 150px;
     font-size: 18px;
@@ -1649,13 +1644,14 @@ text-align: center;
 }
 .send-btn {
     font-size: 20px;
-    border: #81256c solid 2px;
+    border: #b197d4 solid 2px;
     padding: 7px 69px;
-    background-color: #81256c;
+    background-color: #b197d4;
     color: #fff;
     margin-left: 15px;
     margin-top: 20px;
     margin: 0 auto;
+    border-radius: 30px;
 }
 
  .send-btn:hover {
@@ -1765,7 +1761,7 @@ ul.location_icon li a{
     margin-bottom: 90px;
 }
  .about-bg {
-    background-color: #b32137;
+    background-color: #b197d4;
 
 
 
