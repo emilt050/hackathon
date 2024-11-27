@@ -6,8 +6,6 @@ import os
 import time
 import pickle
 
-
-
 if __name__ == "__main__":
     with open("encodings.pickle", "rb") as f:
         data = pickle.loads(f.read())
@@ -25,13 +23,14 @@ picam2 = Picamera2()
 picam2.configure(picam2.create_preview_configuration(main={"format": 'XRGB8888', "size": (1280, 720)}))
 
 # Initialize variables
-cv_scaler = 4  # this has to be a whole number
+cv_scaler = 8  # this has to be a whole number
 face_locations = []
 face_encodings = []
 face_names = []
 frame_count = 0
 start_time = time.time()
 fps = 0
+accuracy = 0
 
 # Function to log recognized names in a file
 def log_recognized_name(name, log_file="recognized_faces.txt"):
@@ -43,7 +42,7 @@ def log_recognized_name(name, log_file="recognized_faces.txt"):
 
 # Process a frame to detect faces
 def process_frame(frame):
-    global face_locations, face_encodings, face_names
+    global face_locations, face_encodings, face_names, accuracy
     unknown_detected = False
     # Resize frame for faster processing
     resized_frame = cv2.resize(frame, (0, 0), fx=(1 / cv_scaler), fy=(1 / cv_scaler))
@@ -54,6 +53,7 @@ def process_frame(frame):
     face_encodings = face_recognition.face_encodings(rgb_resized_frame, face_locations, model="large")
 
     face_names = []
+    accuracies = []
     for face_encoding in face_encodings:
         matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
         name = "Unknown"
@@ -63,15 +63,22 @@ def process_frame(frame):
         best_match_index = np.argmin(face_distances)
         if matches[best_match_index]:
             name = known_face_names[best_match_index]
+            accuracies.append(1 - face_distances[best_match_index])
 
         face_names.append(name)
 
         # Log recognized name if not "Unknown"
-        if name != "Unknown":
-            log_recognized_name(name)
+        # if name != "Unknown":
+        #     log_recognized_name(name)
 
         if name == "Unknown":
             unknown_detected = True
+
+    # Calculate average accuracy
+    if accuracies:
+        accuracy = np.mean(accuracies) * 100
+    else:
+        accuracy = 0
 
     # If unknown face is detected, flash red
     if unknown_detected:
@@ -84,6 +91,7 @@ def process_frame(frame):
 
 # Draw results on the frame
 def draw_results(frame):
+    global accuracy
     for (top, right, bottom, left), name in zip(face_locations, face_names):
         # Scale face locations back to original size
         top *= cv_scaler
@@ -99,6 +107,9 @@ def draw_results(frame):
         font = cv2.FONT_HERSHEY_DUPLEX
         cv2.putText(frame, name, (left + 6, top - 6), font, 1.0, (255, 255, 255), 1)
 
+    # Display accuracy percentage
+    cv2.putText(frame, f"Accuracy: {accuracy:.2f}%", (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+
     return frame
 
 # Calculate FPS
@@ -111,7 +122,6 @@ def calculate_fps():
         frame_count = 0
         start_time = time.time()
     return fps
-
 
 def video_stream():
     picam2.start()
@@ -161,5 +171,5 @@ if __name__ == "__main__":
         if cv2.waitKey(1) == ord("q"):
             break
 
-        cv2.destroyAllWindows()
-        picam2.stop()
+    cv2.destroyAllWindows()
+    picam2.stop()
