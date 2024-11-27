@@ -6,14 +6,20 @@ import os
 import time
 import pickle
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# Load pre-trained face encodings
-print("[INFO] loading encodings...")
-encodings_path = os.path.join(BASE_DIR, "recognition_app" , "encodings.pickle")
-with open("encodings.pickle", "rb") as f:
-    data = pickle.loads(f.read())
+
+
+if __name__ == "__main__":
+    with open("encodings.pickle", "rb") as f:
+        data = pickle.loads(f.read())
+else:
+    from django.conf import settings
+    BASE_DIR = settings.BASE_DIR
+    with open(os.path.join(BASE_DIR,"recognition_app", "encodings.pickle"), "rb") as f:
+        data = pickle.loads(f.read())
+
 known_face_encodings = data["encodings"]
 known_face_names = data["names"]
+
 
 # Initialize the camera
 picam2 = Picamera2()
