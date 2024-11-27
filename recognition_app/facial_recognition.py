@@ -44,7 +44,7 @@ def log_recognized_name(name, log_file="recognized_faces.txt"):
 # Process a frame to detect faces
 def process_frame(frame):
     global face_locations, face_encodings, face_names
-
+    unknown_detected = False
     # Resize frame for faster processing
     resized_frame = cv2.resize(frame, (0, 0), fx=(1 / cv_scaler), fy=(1 / cv_scaler))
     rgb_resized_frame = cv2.cvtColor(resized_frame, cv2.COLOR_BGR2RGB)
@@ -69,6 +69,16 @@ def process_frame(frame):
         # Log recognized name if not "Unknown"
         if name != "Unknown":
             log_recognized_name(name)
+
+        if name == "Unknown":
+            unknown_detected = True
+
+    # If unknown face is detected, flash red
+    if unknown_detected:
+        overlay = frame.copy()
+        cv2.rectangle(overlay, (0, 0), (frame.shape[1], frame.shape[0]), (0, 0, 255), -1)
+        alpha = 0.4  # Transparency factor
+        frame = cv2.addWeighted(overlay, alpha, frame, 1 - alpha, 0)
 
     return frame
 

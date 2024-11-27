@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/static/css/jquery.mCustomScrollbar.min.css">
     <style>
         body {
+            font-family: ui-sans-serif, sans-serif; 
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -29,18 +30,22 @@
             margin-bottom: 20px;
         }
         .video-container-wrapper {
+            font-family: ui-sans-serif, sans-serif;
             display: flex;
             flex-direction: row;
             align-items: center;
             gap: 20px;
         }
         .video-container {
+            font-family: ui-sans-serif, sans-serif;
             text-align: center;
             position: relative;
             overflow: hidden; /* Hide overflow when zooming */
             width: 640px; /* Fixed width */
             height: 360px; /* Fixed height */
             border: 1px solid black;
+            box-shadow: 0 0 30px rgba(74, 117, 235, 0.6);
+            border-radius: 10px;
         }
         video {
             width: 100%; /* Fit video to container width */
@@ -59,10 +64,12 @@
             font-size: 16px;
         }
         .zoom-slider {
+            font-family: ui-sans-serif, sans-serif;
             writing-mode: bt-lr; /* Vertical slider */
             -webkit-appearance: slider-vertical; /* For Safari */
             width: 8px;
             height: 200px;
+            border-radius: 10px;
         }
     </style>
 
