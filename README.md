@@ -1,12 +1,12 @@
 
-## Apt 
+## Requirements APT
 ``` bash
-sudo apt update;
-sudo apt install cmake -y
+sudo sh -c "apt update && apt install -y \
+cmake python3-picamera2"
 
 ```
 
-## Instalare prin pip (Python 3.11)
+## Requirements Python 3.11
 ``` bash
 python3 -m venv --system-site-packages .venv
 source .venv/bin/activate
